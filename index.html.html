@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adnan Ali — Portfolio | Client Relations & Customer Success</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#16233D;
+    --ink-soft:#22314F;
+    --paper:#F3EEE3;
+    --paper-white:#FBF9F4;
+    --gold:#C99A3D;
+    --gold-soft:#E4C078;
+    --teal:#3E7C74;
+    --slate:#333B47;
+    --slate-soft:#5C6472;
+    --line:rgba(22,35,61,0.14);
+    --line-on-ink:rgba(243,238,227,0.16);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--slate);
+    font-family:'IBM Plex Sans',sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces',serif;
+    margin:0;
+    color:var(--ink);
+    font-weight:600;
+  }
+  .mono{font-family:'IBM Plex Mono',monospace;}
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin-bottom:14px;
+    display:block;
+  }
+  .eyebrow.on-paper{color:var(--teal);}
+  a{color:inherit;}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 32px;}
+  section{padding:96px 0;}
+  @media (max-width:640px){ section{padding:64px 0;} .wrap{padding:0 22px;} }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background:var(--ink);
+    color:var(--paper);
+    position:relative;
+    overflow:hidden;
+    padding:120px 0 100px;
+  }
+  .hero::before{
+    content:"";
+    position:absolute;
+    top:-40%; right:-10%;
+    width:600px; height:600px;
+    border-radius:50%;
+    background:radial-gradient(circle, rgba(201,154,61,0.16), transparent 70%);
+    pointer-events:none;
+  }
+  .hero .wrap{position:relative;z-index:1;}
+  .hero-kicker{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--gold-soft);
+    margin-bottom:24px;
+  }
+  .hero h1{
+    color:var(--paper-white);
+    font-size:clamp(42px,7vw,74px);
+    line-height:0.98;
+    letter-spacing:-0.01em;
+    margin-bottom:18px;
+  }
+  .hero .role{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:15px;
+    color:var(--gold-soft);
+    margin-bottom:36px;
+  }
+  .hero .thesis{
+    font-family:'Fraunces',serif;
+    font-weight:400;
+    font-style:italic;
+    font-size:clamp(19px,2.4vw,25px);
+    color:var(--paper);
+    max-width:640px;
+    line-height:1.45;
+    margin-bottom:48px;
+  }
+  .contact-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:22px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:13px;
+    color:var(--paper);
+    opacity:0.85;
+    border-top:1px solid var(--line-on-ink);
+    padding-top:26px;
+  }
+  .contact-row a{text-decoration:none;border-bottom:1px solid rgba(243,238,227,0.35);padding-bottom:2px;}
+  .contact-row a:hover{border-color:var(--gold);color:var(--gold-soft);}
+
+  /* ---------- BRIDGE (signature) ---------- */
+  .bridge{background:var(--paper);}
+  .bridge h2{font-size:clamp(28px,4vw,38px);margin-bottom:10px;}
+  .bridge .sub{color:var(--slate-soft);max-width:560px;margin-bottom:64px;font-size:15.5px;line-height:1.6;}
+  .pipeline{
+    position:relative;
+    display:grid;
+    grid-template-columns:repeat(6,1fr);
+    gap:0;
+  }
+  .pipeline .track{
+    position:absolute;
+    top:11px;
+    left:calc(100%/12);
+    right:calc(100%/12);
+    height:2px;
+    background:var(--line);
+    z-index:0;
+  }
+  .pipeline .pulse{
+    position:absolute;
+    top:8px;
+    width:8px;height:8px;
+    border-radius:50%;
+    background:var(--gold);
+    box-shadow:0 0 0 4px rgba(201,154,61,0.18);
+    animation:travel 9s linear infinite;
+    z-index:1;
+  }
+  @keyframes travel{
+    0%{left:8.3%;}
+    100%{left:91.7%;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .pipeline .pulse{animation:none;left:50%;}
+  }
+  .stage{
+    position:relative;
+    z-index:2;
+    padding-right:18px;
+  }
+  .stage .num{
+    width:24px;height:24px;
+    border-radius:50%;
+    background:var(--paper);
+    border:2px solid var(--ink);
+    color:var(--ink);
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    display:flex;align-items:center;justify-content:center;
+    margin-bottom:20px;
+  }
+  .stage h3{
+    font-size:16.5px;
+    margin-bottom:8px;
+    line-height:1.25;
+  }
+  .stage p{
+    font-size:13px;
+    color:var(--slate-soft);
+    line-height:1.55;
+    margin:0;
+  }
+  @media (max-width:900px){
+    .pipeline{grid-template-columns:1fr;gap:34px;}
+    .pipeline .track{display:none;}
+    .stage{padding-left:26px;border-left:2px solid var(--line);padding-right:0;padding-bottom:2px;}
+    .stage .num{margin-bottom:10px;margin-left:-13px;background:var(--paper);}
+  }
+
+  /* ---------- PROFILE ---------- */
+  .profile{background:var(--ink);color:var(--paper);}
+  .profile .wrap{max-width:820px;}
+  .profile p{
+    font-family:'Fraunces',serif;
+    font-weight:400;
+    font-size:clamp(19px,2.6vw,24px);
+    line-height:1.6;
+    color:var(--paper-white);
+  }
+  .profile p::first-letter{
+    font-size:64px;
+    font-weight:600;
+    float:left;
+    line-height:0.8;
+    padding-right:10px;
+    padding-top:6px;
+    color:var(--gold);
+  }
+  .profile .creds{
+    margin-top:40px;
+    display:flex;
+    gap:28px;
+    flex-wrap:wrap;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12.5px;
+    color:var(--gold-soft);
+    border-top:1px solid var(--line-on-ink);
+    padding-top:26px;
+  }
+
+  /* ---------- EXPERIENCE ---------- */
+  .experience{background:var(--paper);}
+  .job{
+    border-top:1px solid var(--line);
+    padding:44px 0;
+    display:grid;
+    grid-template-columns:220px 1fr;
+    gap:40px;
+  }
+  .job:last-child{border-bottom:1px solid var(--line);}
+  @media (max-width:760px){ .job{grid-template-columns:1fr;gap:14px;} }
+  .job .when{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:13px;
+    color:var(--teal);
+  }
+  .job .org{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12.5px;
+    color:var(--slate-soft);
+    margin-top:6px;
+  }
+  .job h3{font-size:22px;margin-bottom:14px;}
+  .job ul{margin:0;padding-left:18px;}
+  .job li{
+    font-size:14.5px;
+    line-height:1.65;
+    color:var(--slate);
+    margin-bottom:9px;
+  }
+  .job li::marker{color:var(--gold);}
+
+  /* ---------- COMPETENCIES ---------- */
+  .competencies{background:var(--ink);color:var(--paper);}
+  .comp-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:36px 56px;
+  }
+  @media (max-width:700px){ .comp-grid{grid-template-columns:1fr;} }
+  .comp-item{border-top:1px solid var(--line-on-ink);padding-top:18px;}
+  .comp-item h4{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--gold-soft);
+    margin:0 0 10px;
+    font-weight:500;
+  }
+  .comp-item p{
+    margin:0;
+    font-size:14.5px;
+    line-height:1.6;
+    color:rgba(243,238,227,0.82);
+  }
+
+  /* ---------- PROJECTS ---------- */
+  .projects{background:var(--paper);}
+  .proj-list{display:flex;flex-direction:column;}
+  .proj{
+    border-top:1px solid var(--line);
+    padding:30px 0;
+    display:grid;
+    grid-template-columns:1fr 2.3fr;
+    gap:30px;
+  }
+  .proj:last-child{border-bottom:1px solid var(--line);}
+  @media (max-width:700px){ .proj{grid-template-columns:1fr;gap:8px;} }
+  .proj h3{font-size:17.5px;line-height:1.35;}
+  .proj p{font-size:14.5px;line-height:1.6;color:var(--slate-soft);margin:0;}
+
+  /* ---------- EDUCATION ---------- */
+  .education{background:var(--ink);color:var(--paper);}
+  .edu-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px;margin-bottom:34px;}
+  .edu-top h3{color:var(--paper-white);font-size:22px;}
+  .edu-top .school{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--gold-soft);margin-top:6px;}
+  .badge{
+    align-self:flex-start;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11.5px;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    color:var(--teal);
+    border:1px solid var(--teal);
+    border-radius:999px;
+    padding:6px 14px;
+    white-space:nowrap;
+  }
+  .chip-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px;}
+  .chip{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    color:rgba(243,238,227,0.75);
+    border:1px solid var(--line-on-ink);
+    border-radius:6px;
+    padding:6px 11px;
+  }
+  .edu-secondary{
+    margin-top:40px;
+    border-top:1px solid var(--line-on-ink);
+    padding-top:28px;
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:16px;
+    font-size:14.5px;
+    color:rgba(243,238,227,0.85);
+  }
+  .edu-secondary .mono{color:var(--gold-soft);}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--paper);padding:70px 0 50px;}
+  footer .line{border-top:1px solid var(--line);padding-top:34px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;}
+  footer h2{font-size:clamp(26px,4vw,36px);margin-bottom:20px;}
+  footer .contact-row2{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:13.5px;
+    color:var(--slate);
+    display:flex;flex-wrap:wrap;gap:20px;
+  }
+  footer .contact-row2 a{text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:2px;}
+  footer .contact-row2 a:hover{color:var(--teal);border-color:var(--teal);}
+  footer .fine{font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--slate-soft);}
+
+  .reveal{opacity:0;transform:translateY(14px);transition:opacity 0.7s ease, transform 0.7s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
+  @media (prefers-reduced-motion: reduce){ .reveal{opacity:1;transform:none;transition:none;} }
+
+  ::selection{background:var(--gold);color:var(--ink);}
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-kicker">Client Relations · Customer Success · Product Collaboration</div>
+    <h1>Adnan&nbsp;Ali</h1>
+    <div class="role mono">Senior Executive — Client Relations &amp; Customer Success · OnceHub</div>
+    <p class="thesis">The person client success trusts to turn what customers need into what actually gets built — and the one product trusts to tell them when it won't land.</p>
+    <div class="contact-row">
+      <a href="mailto:p.adnanali@gmail.com">p.adnanali@gmail.com</a>
+      <a href="tel:+919838588741">+91&nbsp;98385&nbsp;88741</a>
+      <a href="https://www.linkedin.com/in/adnan-ali-751649120/" target="_blank" rel="noopener">LinkedIn</a>
+      <span>Prayagraj, India</span>
+    </div>
+  </div>
+</section>
+
+<section class="bridge">
+  <div class="wrap">
+    <span class="eyebrow on-paper reveal">How the work moves</span>
+    <h2 class="reveal">One client conversation, six handoffs, one release.</h2>
+    <p class="sub reveal">Every feature that reaches a customer passes through the same route — client insight in, working software out. This is the path a request actually takes across OnceHub's client and product sides.</p>
+
+    <div class="pipeline reveal">
+      <div class="track"></div>
+      <div class="pulse"></div>
+
+      <div class="stage">
+        <div class="num">01</div>
+        <h3>Discovery</h3>
+        <p>Runs discovery meetings across multiple lines of business to surface what clients actually need, not just what they ask for.</p>
+      </div>
+      <div class="stage">
+        <div class="num">02</div>
+        <h3>User stories</h3>
+        <p>Converts client pain points into user stories and use cases that feed directly into Product's PRDs.</p>
+      </div>
+      <div class="stage">
+        <div class="num">03</div>
+        <h3>PRD review</h3>
+        <p>Reviews PRDs before sign-off, flagging scope gaps and adoption risk from the client-facing side.</p>
+      </div>
+      <div class="stage">
+        <div class="num">04</div>
+        <h3>Sprint voice</h3>
+        <p>Sits in Engineering's sprint planning, weekly to twice monthly, as the client-side voice on priority.</p>
+      </div>
+      <div class="stage">
+        <div class="num">05</div>
+        <h3>UAT</h3>
+        <p>Tests every release before clients see it, catching shortcomings and routing fixes back to the team.</p>
+      </div>
+      <div class="stage">
+        <div class="num">06</div>
+        <h3>Delivery</h3>
+        <p>Owns the engagement to on-time completion, or keeps it running clean, within a fixed timeline.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="profile">
+  <div class="wrap">
+    <span class="eyebrow reveal">Profile</span>
+    <p class="reveal">Versatile Senior Executive with 4+ years managing multiple lines of business and client accounts in a global SaaS environment, spanning account management, onboarding, discovery, and vendor-side program ownership. Owns client-side engagements end-to-end — driving projects to on-time completion or sustaining them in stable, ongoing operation — while acting as the primary liaison between clients, Sales, Product, and Engineering. Periodically called on for product-facing assignments given deep client pain-point knowledge and cross-functional communication strength.</p>
+    <div class="creds reveal">
+      <span>MBA — Business Analytics, BITS Pilani (WILP)</span>
+      <span>PMP — In Progress</span>
+      <span>B.Tech — Food Processing Engineering, SHUATS</span>
+    </div>
+  </div>
+</section>
+
+<section class="experience">
+  <div class="wrap">
+    <span class="eyebrow on-paper reveal">Experience</span>
+    <h2 class="reveal" style="margin-bottom:8px;">Where this was built.</h2>
+
+    <div class="job reveal">
+      <div>
+        <div class="when">Jun 2022 — Present</div>
+        <div class="org">OnceHub · Remote</div>
+      </div>
+      <div>
+        <h3>Senior Executive — Client Relations &amp; Customer Success</h3>
+        <ul>
+          <li>Manages multiple lines of business and client accounts concurrently, across account management, onboarding, discovery, and consultant-style engagement.</li>
+          <li>Owns client-side engagements end-to-end — on-time completion, or stable ongoing operation, within fixed timelines.</li>
+          <li>Writes user stories and use cases from discovery meetings that feed directly into Product's PRDs, and reviews PRDs before finalization.</li>
+          <li>Participates in Engineering's sprint planning as the client-side voice, and runs post-release UAT to catch issues before customers do.</li>
+          <li>Serves as primary vendor-side program contact for a major U.S. financial services client, owning governance cadence, delivery tracking, and escalations.</li>
+          <li>Presented feature-prioritization recommendations directly to CPO/CTO-level leadership as part of an internal Product Manager evaluation.</li>
+          <li>Builds JIRA- and Power BI-based dashboards giving leadership visibility into delivery health and feature adoption.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="job reveal">
+      <div>
+        <div class="when">Aug 2021 — Jun 2022</div>
+        <div class="org">Roblox (via iEnergizer) · Noida</div>
+      </div>
+      <div>
+        <h3>Assistant Executive — Project Coordination</h3>
+        <ul>
+          <li>Coordinated client deliverables and project timelines across internal teams, keeping milestones on fixed schedules.</li>
+          <li>Acted as liaison between client, product, and delivery teams, managing requirements flow and expectations.</li>
+          <li>Supported account documentation, onboarding administration, and stakeholder reporting.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="competencies">
+  <div class="wrap">
+    <span class="eyebrow reveal">Competencies</span>
+    <h2 class="reveal" style="color:var(--paper-white);margin-bottom:44px;">What the role actually draws on.</h2>
+    <div class="comp-grid">
+      <div class="comp-item reveal">
+        <h4>Account &amp; Client Management</h4>
+        <p>Multi-LOB account ownership, onboarding &amp; discovery, consultant-style engagement, adoption &amp; retention, business reviews.</p>
+      </div>
+      <div class="comp-item reveal">
+        <h4>Product Collaboration</h4>
+        <p>User story &amp; use case writing, PRD review, sprint planning participation, post-release UAT, feature prioritization.</p>
+      </div>
+      <div class="comp-item reveal">
+        <h4>Project &amp; Delivery Management</h4>
+        <p>Agile &amp; Waterfall exposure, fixed-timeline delivery, milestone tracking, risk &amp; escalation management.</p>
+      </div>
+      <div class="comp-item reveal">
+        <h4>Stakeholder &amp; Vendor Management</h4>
+        <p>Executive communication, cross-functional liaison across Sales, Product &amp; Engineering, vendor relationship ownership.</p>
+      </div>
+      <div class="comp-item reveal">
+        <h4>Contracts &amp; Commercials</h4>
+        <p>MSA/SOW workflow support, contract change coordination, renewal &amp; upsell/cross-sell support.</p>
+      </div>
+      <div class="comp-item reveal">
+        <h4>Data &amp; Reporting</h4>
+        <p>Dashboard design, churn &amp; trend analytics, MIS reporting, KPI tracking in JIRA and Power BI.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="projects">
+  <div class="wrap">
+    <span class="eyebrow on-paper reveal">Selected work</span>
+    <h2 class="reveal" style="margin-bottom:8px;">Projects &amp; achievements.</h2>
+
+    <div class="proj-list">
+      <div class="proj reveal">
+        <h3>Feature Prioritization Assignment</h3>
+        <p>Evaluated and presented prioritization recommendations across three product initiatives — Redtail CRM integration, Workload Rules, Smart Booking Forms — as part of an internal PM assessment, engaging directly with CPO/CTO-level stakeholders.</p>
+      </div>
+      <div class="proj reveal">
+        <h3>AI-Driven Client Data Model</h3>
+        <p>Designed an AI- and API-driven client data model — including exposure to MCP (Model Context Protocol) server-based integrations — identifying key churn factors and operational bottlenecks, contributing to measurable improvements in retention and delivery efficiency.</p>
+      </div>
+      <div class="proj reveal">
+        <h3>Feature Feedback Dashboard</h3>
+        <p>Built and maintained a dashboard for tracking feature requests, improving communication and visibility between Client Services and Product.</p>
+      </div>
+      <div class="proj reveal">
+        <h3>MBA Research — AI in Customer Engagement Analytics</h3>
+        <p>Evaluated AI's impact on sales, support, and knowledge-base KPIs as part of MBA coursework.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="education">
+  <div class="wrap">
+    <span class="eyebrow reveal">Education</span>
+    <div class="edu-top reveal">
+      <div>
+        <h3>MBA in Business Analytics</h3>
+        <div class="school">BITS Pilani — Work Integrated Learning Programme</div>
+      </div>
+      <div class="badge">PMP — In progress</div>
+    </div>
+    <div class="chip-row reveal">
+      <span class="chip">Project Management</span>
+      <span class="chip">Predictive Analytics</span>
+      <span class="chip">Data Visualization &amp; Communication</span>
+      <span class="chip">Foundations of Data Science</span>
+      <span class="chip">Analytics for Competitive Advantage</span>
+      <span class="chip">Strategic Management &amp; Business Policy</span>
+      <span class="chip">Operations Management</span>
+      <span class="chip">Financial Management</span>
+      <span class="chip">Managerial Economics</span>
+      <span class="chip">Managing People &amp; Organizations</span>
+      <span class="chip">Advanced Statistical Methods</span>
+      <span class="chip">Quantitative Methods</span>
+      <span class="chip">Marketing Foundations</span>
+      <span class="chip">Financial &amp; Management Accounting</span>
+    </div>
+    <div class="edu-secondary reveal">
+      <span>B.Tech in Food Processing Engineering — <span class="mono">SHUATS, Allahabad</span></span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <h2>Let's talk about what you're building.</h2>
+    <div class="line">
+      <div class="contact-row2">
+        <a href="mailto:p.adnanali@gmail.com">p.adnanali@gmail.com</a>
+        <a href="tel:+919838588741">+91 98385 88741</a>
+        <a href="https://www.linkedin.com/in/adnan-ali-751649120/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+      <div class="fine">Prayagraj, India · Open to relocation</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const items = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  items.forEach(i => io.observe(i));
+</script>
+
+</body>
+</html>
